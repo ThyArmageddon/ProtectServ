@@ -119,7 +119,6 @@ class ProtectServ(irc.IRCClient):
 
         # Parse each incoming line and search for <COMMAND>question
         try:
-            self.current_time = time.time()
             try:
                 self._admins.index(user)
                 is_admin = True
@@ -127,23 +126,11 @@ class ProtectServ(irc.IRCClient):
                 is_admin = False
 
             if (msg[0] == config.COMMAND):
-                if (self.current_time - self._time) < 10 and not is_admin:
-                    print("I cannot give an answer right now, user has to wait another %s seconds" % int(self.current_time - self._time))
-                    return
-                elif not is_admin:
-                    self._time = time.time()
-
                 command = msg.replace(config.COMMAND, '').split()[0]
                 args = msg.replace(config.COMMAND, '').split()[1:]
                 self.select_command(command, args, user, channel)
                 return
             elif (msg.split()[0].find(self.nickname) == 0):
-                if (self.current_time - self._time) < 10 and not is_admin:
-                    print("I cannot give an answer right now, user has to wait another %s seconds" % int(self.current_time - self._time))
-                    return
-                elif not is_admin:
-                    self._time = time.time()
-
                 command = msg.split()[1]
                 args = msg.replace(self.nickname, '').split()[2:]
                 self.select_command(command, args, user, channel)
