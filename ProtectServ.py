@@ -42,6 +42,7 @@ class ProtectServ(irc.IRCClient):
             'die': self._die,
             'join': self._join,
             'part': self._part,
+            'say': self._say,
         }
         self.unpriviledged_commands = {
             'source': self._show_source,
@@ -84,7 +85,6 @@ class ProtectServ(irc.IRCClient):
         '''
         Print to terminal when the bot joins a channel
         '''
-
         print("I joined %s." % channel)
 
     def userJoined(self, user, channel):
@@ -240,6 +240,13 @@ class ProtectServ(irc.IRCClient):
         #   - Validate channel format
         #   - Add the ability to part multiple channels
         self.part(args[0])
+
+    def _say(self, args, user, channel):
+        #TODO:
+        #   - Validate command format
+        #   - Validate channel format
+        #   - Check if bot is in that channel
+        self._cmsg(args[0], ' '.join(args[1:]))
 
 
 class ircbotFactory(ClientFactory):
