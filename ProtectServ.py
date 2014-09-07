@@ -41,6 +41,7 @@ class ProtectServ(irc.IRCClient):
         self.priviledged_commands = {
             'die': self._die,
             'join': self._join,
+            'part': self._part,
         }
         self.unpriviledged_commands = {
             'source': self._show_source,
@@ -233,6 +234,12 @@ class ProtectServ(irc.IRCClient):
         #   - Validate channel format
         #   - Add the ability to join multiple channels
         self.join(args[0])
+
+    def _part(self, args, user, channel):
+        #TODO:
+        #   - Validate channel format
+        #   - Add the ability to part multiple channels
+        self.part(args[0])
 
 
 class ircbotFactory(ClientFactory):
