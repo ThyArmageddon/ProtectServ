@@ -75,7 +75,7 @@ class ProtectServ(irc.IRCClient):
 
         self.msg(config.SERVICES_NAME, '%s %s %s' %
                  (config.AUTHENTICATION_COMMAND,
-                  config.DEFAULT_NICK,
+                  config.SERVICES_ACCOUNT,
                   config.SERVICES_PASSWORD))
         time.sleep(5)
         self.join(self._channel)

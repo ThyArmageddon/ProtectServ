@@ -1,6 +1,7 @@
 CHANNEL = '#MissingSemicolon'
 ADMINS = ['admin']
 SERVICES_NAME = 'NickServ@Services.Host.com'
+SERVICES_ACCOUNT = 'ProtectServ'
 SERVICES_PASSWORD = 'password'
 AUTHENTICATION_COMMAND = 'AUTH'
 COLOR_CODE = '\0034,1 '
