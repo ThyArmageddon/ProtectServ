@@ -146,6 +146,9 @@ class ProtectServ(irc.IRCClient):
         except:
             return
 
+    def noticed(self, user, channel, msg):
+        print("NOTICE: %s: %s: %s" % (user, channel, msg))
+
     def ctcpquery(self, user, channel, msg):
         '''
         responds to ctcp requests.
