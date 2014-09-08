@@ -73,8 +73,10 @@ class ProtectServ(irc.IRCClient):
         Actions to perform a sigon to the server
         '''
 
-        self.msg('NS@Services.Beirut.com', 'AUTH %s %s' %
-                 (config.DEFAULT_NICK, config.SERVICES_PASSWORD))
+        self.msg(config.SERVICES_NAME, '%s %s %s' %
+                 (config.AUTHENTICATION_COMMAND,
+                  config.DEFAULT_NICK,
+                  config.SERVICES_PASSWORD))
         time.sleep(5)
         self.join(self._channel)
         self._gmsg("Ahhhh, I am in %s" % self._channel)
